@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyzing Approximate Circuits with ML — Natália Ivanisková</title>
+<style>
+@font-face { font-family: Poppins; src: url(../fonts/Poppins-Regular.ttf);  font-weight: 400; }
+@font-face { font-family: Poppins; src: url(../fonts/Poppins-Medium.ttf);   font-weight: 500; }
+@font-face { font-family: Poppins; src: url(../fonts/Poppins-SemiBold.ttf); font-weight: 600; }
+@font-face { font-family: Poppins; src: url(../fonts/Poppins-Bold.ttf);     font-weight: 700; }
+
+:root {
+  --ink:    #292D2D;
+  --accent: #8A6952;
+  --band:   #DFD7D3;
+  --card:   #FAF6F3;
+  --rule:   #D8CEC8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { background: #E9E4E0; }
+
+body {
+  font-family: Poppins, sans-serif;
+  color: var(--ink);
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 14mm 8mm 20mm;
+}
+
+.top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4mm;
+  padding-bottom: 4mm;
+  border-bottom: 1pt solid var(--band);
+  margin-bottom: 8mm;
+}
+
+.top a.back {
+  font-size: 9pt;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+.top a.back:hover { text-decoration: underline; }
+
+.tag {
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.4pt;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2mm;
+}
+
+h1 {
+  font-size: 18pt;
+  font-weight: 700;
+  letter-spacing: 0.2pt;
+  margin-bottom: 3mm;
+  line-height: 1.25;
+}
+
+.meta {
+  font-size: 8.5pt;
+  color: #74787a;
+  margin-bottom: 8mm;
+}
+.meta span { margin-right: 4mm; }
+
+.section {
+  background: var(--card);
+  border-radius: 3px;
+  padding: 6mm 7mm;
+  margin-bottom: 5mm;
+}
+
+.section h2 {
+  font-size: 11.5pt;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 2.5mm;
+}
+
+.section h3 {
+  font-size: 9.5pt;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 3.5mm 0 1.5mm;
+}
+
+.section p {
+  font-size: 9.6pt;
+  line-height: 1.55;
+  text-align: justify;
+  margin-bottom: 2mm;
+}
+
+.section ul, .section ol {
+  font-size: 9.6pt;
+  line-height: 1.6;
+  padding-left: 5mm;
+  margin-bottom: 2mm;
+}
+.section ul li, .section ol li { margin-bottom: 1.5mm; }
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2mm;
+  margin-top: 3mm;
+}
+.keywords span {
+  font-size: 7.8pt;
+  font-weight: 600;
+  color: var(--accent);
+  background: #fff;
+  border: 0.7pt solid var(--rule);
+  padding: 1.2mm 3mm;
+  border-radius: 20px;
+}
+
+/* image gallery placeholder — ready for future results figures */
+.cta-row {
+  display: flex;
+  gap: 3mm;
+  flex-wrap: wrap;
+  margin-top: 6mm;
+}
+.cta {
+  font-size: 9pt;
+  font-weight: 600;
+  color: #fff;
+  background: var(--ink);
+  padding: 2.8mm 6mm;
+  border-radius: 2px;
+  text-decoration: none;
+  letter-spacing: 0.2pt;
+}
+.cta:hover { background: var(--accent); }
+.cta.secondary {
+  background: none;
+  border: 1pt solid var(--ink);
+  color: var(--ink);
+}
+.cta.secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+.footer {
+  text-align: center;
+  font-size: 8pt;
+  color: #8a8e8e;
+  margin-top: 10mm;
+  padding-top: 4mm;
+  border-top: 1pt solid var(--band);
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <a class="back" href="index.html">&larr; Back to Projects</a>
+</div>
+
+<div class="tag">Master's Thesis</div>
+<h1>Analyzing Approximate Circuit Libraries Using Machine Learning Methods</h1>
+<div class="meta">
+  <span>Brno University of Technology, Faculty of Information Technology</span> ·
+  <span>2026</span>
+</div>
+
+<div class="section">
+  <h2>Overview</h2>
+  <p>Modern chips increasingly use "approximate" circuits — components that trade a small amount of accuracy for significant gains in speed and energy efficiency. Designing these circuits automatically, through evolutionary algorithms that explore thousands of candidate designs, requires constantly checking each candidate's real-world performance, which normally means running professional, computationally expensive circuit-design tools.</p>
+  <p>This thesis analyzes a library of approximate 8-bit multiplier circuits (EvoApproxLib) to understand the trade-offs between their accuracy, power consumption, and delay, then builds fast machine learning models that predict these hardware properties directly from a circuit's structure, without needing to run full synthesis tools each time.</p>
+</div>
+
+<div class="section">
+  <h2>Approach</h2>
+  <p>Diagnostic scripts were written to examine a circuit's internal structure — how its logic gates are arranged and distributed — and turn that structure into a set of measurable features. These features were used to train machine learning models that predict key hardware properties (delay, power, chip area) and error metrics such as mean absolute error (MAE) and worst-case error (WCE), producing fast estimators that stand in for slow, resource-heavy simulation.</p>
+  <p>The work builds on evolutionary circuit design using Cartesian Genetic Programming, where thousands of candidate circuits are evaluated per run, making fast, lightweight estimation especially valuable.</p>
+
+  <div class="keywords">
+    <span>Approximate Computing</span>
+    <span>Cartesian Genetic Programming</span>
+    <span>Evolutionary Design</span>
+    <span>Surrogate Models</span>
+    <span>Machine Learning</span>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Results</h2>
+  <p>The resulting indicators and models were able to stand in for the hardware attributes and error metrics that would otherwise require synthesizing each circuit with professional design tools, offering a much faster, lightweight way to estimate a candidate circuit's quality. This is especially useful during evolutionary design, where an algorithm needs to evaluate huge numbers of candidate circuits and cannot afford to run full synthesis on each one.</p>
+  <p>The full set of experiments, figures, and detailed evaluation is available in the complete thesis text linked below.</p>
+</div>
+
+<div class="cta-row">
+  <a class="cta" href="https://www.vut.cz/www_base/zav_prace_soubor_verejne.php?file_id=295095" target="_blank" rel="noopener noreferrer">Read full thesis (PDF) &rarr;</a>
+  <a class="cta secondary" href="https://www.vut.cz/studenti/zav-prace/detail/172776" target="_blank" rel="noopener noreferrer">Thesis record at VUT</a>
+</div>
+
+<div class="footer">
+  Faculty of Information Technology, Brno University of Technology
+</div>
+
+</body>
+</html>
