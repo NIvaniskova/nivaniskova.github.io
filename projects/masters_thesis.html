@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Analyzing Approximate Circuits with ML — Natália Ivanisková</title>
+<title>Analyzing Approximate Circuits with ML – Natália Ivanisková</title>
 <style>
 @font-face { font-family: Poppins; src: url(../fonts/Poppins-Regular.ttf);  font-weight: 400; }
 @font-face { font-family: Poppins; src: url(../fonts/Poppins-Medium.ttf);   font-weight: 500; }
@@ -125,7 +125,7 @@ h1 {
   border-radius: 20px;
 }
 
-/* image gallery placeholder — ready for future results figures */
+/* image gallery placeholder – ready for future results figures */
 .cta-row {
   display: flex;
   gap: 3mm;
@@ -175,13 +175,13 @@ h1 {
 
 <div class="section">
   <h2>Overview</h2>
-  <p>Modern chips increasingly use "approximate" circuits — components that trade a small amount of accuracy for significant gains in speed and energy efficiency. Designing these circuits automatically, through evolutionary algorithms that explore thousands of candidate designs, requires constantly checking each candidate's real-world performance, which normally means running professional, computationally expensive circuit-design tools.</p>
+  <p>Modern chips increasingly use "approximate" circuits – components that trade a small amount of accuracy for significant gains in speed and energy efficiency. Designing these circuits automatically, through evolutionary algorithms that explore thousands of candidate designs, requires constantly checking each candidate's real-world performance, which normally means running professional, computationally expensive circuit-design tools.</p>
   <p>This thesis analyzes a library of approximate 8-bit multiplier circuits (EvoApproxLib) to understand the trade-offs between their accuracy, power consumption, and delay, then builds fast machine learning models that predict these hardware properties directly from a circuit's structure, without needing to run full synthesis tools each time.</p>
 </div>
 
 <div class="section">
   <h2>Approach</h2>
-  <p>Diagnostic scripts were written to examine a circuit's internal structure — how its logic gates are arranged and distributed — and turn that structure into a set of measurable features. These features were used to train machine learning models that predict key hardware properties (delay, power, chip area) and error metrics such as mean absolute error (MAE) and worst-case error (WCE), producing fast estimators that stand in for slow, resource-heavy simulation.</p>
+  <p>Diagnostic scripts were written to examine a circuit's internal structure – how its logic gates are arranged and distributed – and turn that structure into a set of measurable features. These features were used to train machine learning models that predict key hardware properties (delay, power, chip area) and error metrics such as mean absolute error (MAE) and worst-case error (WCE), producing fast estimators that stand in for slow, resource-heavy simulation.</p>
   <p>The work builds on evolutionary circuit design using Cartesian Genetic Programming, where thousands of candidate circuits are evaluated per run, making fast, lightweight estimation especially valuable.</p>
 
   <div class="keywords">
