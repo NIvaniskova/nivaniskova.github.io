@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family:Verdana;
+        color:#aaaaaa;
+    }
+
+    .intro h1 {
+        color:#672D5C
+    }
+
+    .menu a {
+        background-color: #e5e5e5;
+        padding: 8px;
+        margin-top: 7px;
+        display: block;
+        width: 100%;
+        color: black;
+    }
+
+    .main {
+        float: left;
+        width: 75%;
+        padding: 0 20px;
+        height: 76vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main h2 {
+        color:#672D5C
+    }
+
+    .intro {
+        background-color:#e5e5e5;
+        padding:15px;
+        text-align:center;
+    }
+
+    .footer {
+        background-color:#e5e5e5;
+        text-align:center;
+        padding:10px;
+        margin-top:auto;
+        color:#672D5C
+    }
+
+
+    @media only screen and (max-width: 620px) {
+        /* For mobile phones: */
+        .main {
+            width: 100%;
+        }
+    }
+</style>
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>HI Chatbot</title>
+</head>
+
+<body>
+
+<div class="intro">
+    <h1>HI Chatbot</h1>
+</div>
+
+<div style="overflow:auto">
+
+
+    <div class="main">
+        <p>
+            Konverzačné riešenie študijného programu Hospodárska informatika, ktoré ti pomôže s adaptáciou na univerzitné štúdium na FEI TUKE.
+        </p>
+        <ul>
+            <li>Chatbot poskytuje pripravené odpovede na vybrané otázky ohľadom štúdia a odkazy na ďalšie užitočné zdroje.</li>
+            <li>Chatbot nedokáže samostatne odpovedať na ľubovoľné otázky, ide o prototyp.</li>
+        </ul>
+        <h2>Ako používať HI Chatbota?</h2>
+        <ol>
+            <li>Chatbota spustíš kliknutím na ikonu správy v pravom dolnom rohu obrazovky. </li>
+            <li>Na začiatku vyber stupeň svojho štúdia: <span style="color:#672D5C">Bakalárske</span> alebo <span style="color:#672D5C">Inžinierske</span>.</li>
+            <li>Vyber si z ponúkaných tém, na ktoré HI Chatbot vie v aktuálnej verzii odpovedať.</li>
+            <li>Vyber si z predpripravených otázok alebo polož vlastnú otázku.</li>
+            <li>Ak si chceš opäť vybrať z tém otázok, napíš správu <span style="color:#672D5C">"options"</span>.</li>
+            <li>Ak chceš začať konverzáciu od začiatku, napíš správu <span style="color:#672D5C">"restart"</span>.</li>
+        </ol>
+    </div>
+
+
+
+</div>
+
+<div class="footer">
+    Hospodárska informatika  <a href="https://hi.kkui.fei.tuke.sk/">hi.kkui.fei.tuke.sk</a>
+</div>
+
+<script>
+    window.watsonAssistantChatOptions = {
+        integrationID: "b55c65cc-92b7-4248-9050-743b13d58045", // The ID of this integration.
+        region: "eu-de", // The region your integration is hosted in.
+        serviceInstanceID: "7b95111a-4c28-4eb7-8b44-afb8b01d8a77", // The ID of your service instance.
+        onLoad: function(instance) { instance.render(); }
+    };
+    setTimeout(function(){
+        const t=document.createElement('script');
+        t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+        document.head.appendChild(t);
+    });
+</script>
+
+</body>
+
+</html>
