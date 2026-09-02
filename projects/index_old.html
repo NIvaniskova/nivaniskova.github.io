@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects – Natália Ivanisková</title>
+<style>
+@font-face { font-family: Poppins; src: url(../fonts/Poppins-Regular.ttf);  font-weight: 400; }
+@font-face { font-family: Poppins; src: url(../fonts/Poppins-Medium.ttf);   font-weight: 500; }
+@font-face { font-family: Poppins; src: url(../fonts/Poppins-SemiBold.ttf); font-weight: 600; }
+@font-face { font-family: Poppins; src: url(../fonts/Poppins-Bold.ttf);     font-weight: 700; }
+
+:root {
+  --ink:    #292D2D;
+  --accent: #8A6952;
+  --band:   #DFD7D3;
+  --card:   #FAF6F3;
+  --rule:   #D8CEC8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { background: #E9E4E0; }
+
+body {
+  font-family: Poppins, sans-serif;
+  color: var(--ink);
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 14mm 8mm 20mm;
+}
+
+.top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4mm;
+  padding-bottom: 4mm;
+  border-bottom: 1pt solid var(--band);
+  margin-bottom: 8mm;
+}
+
+.top h1 {
+  font-size: 20pt;
+  font-weight: 700;
+  letter-spacing: 0.4pt;
+}
+
+.top a.back {
+  font-size: 9pt;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+.top a.back:hover { text-decoration: underline; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5mm;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 3px;
+  padding: 6mm 7mm;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5mm;
+  transition: box-shadow .15s ease, transform .15s ease;
+}
+.card:hover {
+  box-shadow: 0 2px 14px rgba(41,45,45,.10);
+  transform: translateY(-1px);
+}
+
+.card .tag {
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.4pt;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.card h2 {
+  font-size: 13pt;
+  font-weight: 700;
+}
+
+.card p {
+  font-size: 9.3pt;
+  line-height: 1.5;
+  color: #4a4e4e;
+  text-align: justify;
+}
+
+.card .cta {
+  align-self: flex-start;
+  margin-top: 1.5mm;
+  font-size: 8.8pt;
+  font-weight: 600;
+  color: #fff;
+  background: var(--ink);
+  padding: 2.2mm 5mm;
+  border-radius: 2px;
+  text-decoration: none;
+  letter-spacing: 0.2pt;
+}
+.card .cta:hover { background: var(--accent); }
+
+.placeholder {
+  border: 1pt dashed var(--rule);
+  border-radius: 3px;
+  padding: 6mm 7mm;
+  color: #8a8e8e;
+  font-size: 9.3pt;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>Projects</h1>
+  <a class="back" href="../index.html">&larr; Back to CV</a>
+</div>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="tag">Master's Thesis</div>
+    <h2>Analyzing Approximate Circuit Libraries Using Machine Learning Methods</h2>
+    <p>Machine learning models that predict hardware performance – speed, power use, and accuracy trade-offs – of approximate circuits, replacing slow, expensive simulation tools with fast, structure-based estimators. Built on Cartesian Genetic Programming and evolutionary circuit design at FIT VUT Brno.</p>
+    <a class="cta" href="masters_thesis.html">View project &rarr;</a>
+  </div>
+
+  <div class="card">
+    <div class="tag">Bachelor's Thesis</div>
+    <h2>HI Chatbot – Conversational Study Assistant</h2>
+    <p>A conversational solution built with IBM Watson Assistant for the "Business Informatics" study program at FEI TUKE, designed to help students adapt to university life. The chatbot provides predefined answers to selected questions about the study program and links to other useful resources. It is a prototype and cannot answer arbitrary questions independently.</p>
+    <a class="cta" href="bachelor_thesis_project.html">View project &rarr;</a>
+  </div>
+
+</div>
+
+</body>
+</html>

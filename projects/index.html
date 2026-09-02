@@ -64,15 +64,52 @@ body {
 .card {
   background: var(--card);
   border-radius: 3px;
-  padding: 6mm 7mm;
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
-  gap: 2.5mm;
+  flex-direction: row;
+  align-items: stretch;
   transition: box-shadow .15s ease, transform .15s ease;
 }
 .card:hover {
   box-shadow: 0 2px 14px rgba(41,45,45,.10);
   transform: translateY(-1px);
+}
+
+.card .thumb {
+  width: 42mm;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  display: block;
+  background: #fff;
+  padding: 3mm;
+  align-self: center;
+}
+
+.card .thumb-placeholder {
+  width: 42mm;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: repeating-linear-gradient(45deg, #F2ECE8, #F2ECE8 10px, #EDE5E0 10px, #EDE5E0 20px);
+  color: #9a9490;
+  font-size: 8pt;
+  font-weight: 600;
+  letter-spacing: 0.2pt;
+  padding: 2mm;
+}
+
+.card .body {
+  padding: 5mm 7mm;
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+  justify-content: center;
+  min-width: 0;
 }
 
 .card .tag {
@@ -95,27 +132,23 @@ body {
   text-align: justify;
 }
 
-.card .cta {
-  align-self: flex-start;
-  margin-top: 1.5mm;
+.links {
+  display: flex;
+  gap: 4mm;
+  margin-top: 1mm;
+  flex-wrap: wrap;
+}
+.links a {
   font-size: 8.8pt;
   font-weight: 600;
-  color: #fff;
-  background: var(--ink);
-  padding: 2.2mm 5mm;
-  border-radius: 2px;
+  color: var(--accent);
   text-decoration: none;
-  letter-spacing: 0.2pt;
 }
-.card .cta:hover { background: var(--accent); }
+.links a:hover { text-decoration: underline; }
 
-.placeholder {
-  border: 1pt dashed var(--rule);
-  border-radius: 3px;
-  padding: 6mm 7mm;
-  color: #8a8e8e;
-  font-size: 9.3pt;
-  text-align: center;
+@media (max-width: 480px) {
+  .card { flex-direction: column; }
+  .card .thumb, .card .thumb-placeholder { width: 100%; aspect-ratio: 16 / 9; }
 }
 </style>
 </head>
@@ -129,17 +162,41 @@ body {
 <div class="grid">
 
   <div class="card">
-    <div class="tag">Master's Thesis</div>
-    <h2>Analyzing Approximate Circuit Libraries Using Machine Learning Methods</h2>
-    <p>Machine learning models that predict hardware performance – speed, power use, and accuracy trade-offs – of approximate circuits, replacing slow, expensive simulation tools with fast, structure-based estimators. Built on Cartesian Genetic Programming and evolutionary circuit design at FIT VUT Brno.</p>
-    <a class="cta" href="masters_thesis.html">View project &rarr;</a>
+    <img class="thumb" src="img/master_thesis_pic.png" alt="Master thesis analysis results">
+    <div class="body">
+      <div class="tag">Master's Thesis</div>
+      <h2>Analyzing Approximate Circuit Libraries Using Machine Learning Methods</h2>
+      <p>Built machine learning models that predict the speed, power use, and accuracy of approximate hardware circuits directly from their structure, replacing slow simulation tools with fast estimators. Developed on Cartesian Genetic Programming and evolutionary circuit design at FIT VUT Brno.</p>
+      <div class="links">
+        <a href="https://www.vut.cz/www_base/zav_prace_soubor_verejne.php?file_id=295095" target="_blank" rel="noopener noreferrer">Read thesis (PDF) &rarr;</a>
+        <a href="https://www.vut.cz/studenti/zav-prace/detail/172776" target="_blank" rel="noopener noreferrer">Thesis record</a>
+      </div>
+    </div>
   </div>
 
   <div class="card">
-    <div class="tag">Bachelor's Thesis</div>
-    <h2>HI Chatbot – Conversational Study Assistant</h2>
-    <p>A conversational solution built with IBM Watson Assistant for the "Business Informatics" study program at FEI TUKE, designed to help students adapt to university life. The chatbot provides predefined answers to selected questions about the study program and links to other useful resources. It is a prototype and cannot answer arbitrary questions independently.</p>
-    <a class="cta" href="bachelor_thesis_project.html">View project &rarr;</a>
+    <img class="thumb" src="img/anfis_result.png" alt="ANFIS adaptive thermostat simulation results">
+    <div class="body">
+      <div class="tag">Course Project</div>
+      <h2>ANFIS Adaptive Thermostat Control</h2>
+      <p>Built an adaptive room-temperature controller using ANFIS (Adaptive Neuro-Fuzzy Inference System), combining fuzzy logic with a trainable neural network layer so the controller adjusts to changing conditions rather than relying on one fixed rule.</p>
+      <div class="links">
+        <a href="https://github.com/NIvaniskova/SFC-projekt/blob/main/SFC_technical_report.pdf" target="_blank" rel="noopener noreferrer">Technical report (PDF) &rarr;</a>
+        <a href="https://github.com/NIvaniskova/SFC-projekt" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img class="thumb" src="img/hi_logo.png" alt="HI Chatbot logo">
+    <div class="body">
+      <div class="tag">Bachelor's Thesis</div>
+      <h2>HI Chatbot – Conversational Study Assistant</h2>
+      <p>Built a conversational assistant with IBM Watson Assistant for the "Business Informatics" study program at FEI TUKE, helping students adapt to university life through predefined answers and resource links. A working prototype, live below.</p>
+      <div class="links">
+        <a href="bachelor_thesis_project.html">Try the live demo &rarr;</a>
+      </div>
+    </div>
   </div>
 
 </div>
