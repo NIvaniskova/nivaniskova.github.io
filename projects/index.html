@@ -75,15 +75,22 @@ body {
   transform: translateY(-1px);
 }
 
-.card .thumb {
+.card .thumb-wrap {
   width: 42mm;
   flex-shrink: 0;
   aspect-ratio: 1 / 1;
+  align-self: center;
+  background: #fff;
+  padding: 4mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card .thumb-wrap img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   display: block;
-  background: #fff;
-  padding: 3mm;
-  align-self: center;
 }
 
 .card .thumb-placeholder {
@@ -148,7 +155,7 @@ body {
 
 @media (max-width: 480px) {
   .card { flex-direction: column; }
-  .card .thumb, .card .thumb-placeholder { width: 100%; aspect-ratio: 16 / 9; }
+  .card .thumb-wrap, .card .thumb-placeholder { width: 100%; aspect-ratio: 16 / 9; }
 }
 </style>
 </head>
@@ -162,7 +169,7 @@ body {
 <div class="grid">
 
   <div class="card">
-    <img class="thumb" src="img/master_thesis_pic.png" alt="Master thesis analysis results">
+    <div class="thumb-wrap"><img src="img/master_thesis_pic.png" alt="Distribution plot from approximate circuit analysis"></div>
     <div class="body">
       <div class="tag">Master's Thesis</div>
       <h2>Analyzing Approximate Circuit Libraries Using Machine Learning Methods</h2>
@@ -175,7 +182,7 @@ body {
   </div>
 
   <div class="card">
-    <img class="thumb" src="img/anfis_result.png" alt="ANFIS adaptive thermostat simulation results">
+    <div class="thumb-wrap"><img src="img/anfis_result.png" alt="ANFIS adaptive thermostat simulation results"></div>
     <div class="body">
       <div class="tag">Course Project</div>
       <h2>ANFIS Adaptive Thermostat Control</h2>
@@ -188,7 +195,7 @@ body {
   </div>
 
   <div class="card">
-    <img class="thumb" src="img/hi_logo.png" alt="HI Chatbot logo">
+    <div class="thumb-wrap"><img src="img/hi_logo.png" alt="HI Chatbot logo"></div>
     <div class="body">
       <div class="tag">Bachelor's Thesis</div>
       <h2>HI Chatbot – Conversational Study Assistant</h2>
